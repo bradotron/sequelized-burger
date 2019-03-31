@@ -1,0 +1,53 @@
+<div class="container my-4">
+  <div class="jumbotron">
+    <h1>{{title}}</h1>
+    <hr class="my-2">
+    <p>Add burgers to by entering a name and clicking 'Add Burger'. Then devour burgers by clicking 'Devour'.</p>
+    <hr class="my-2">
+      <label for="burger-name-input">Create Your Own Burger</label>
+      <input type="text" class="form-control" id="burger-name-input" aria-describedby="burgerNameHelp" placeholder="Enter a fun burger name...">
+      <small id="burger-name-help" class="form-text text-danger"></small>
+    <button type="submit" id="add-burger-btn" class="btn btn-primary">Add Burger</button>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        {{!-- undevoured burgers go here --}}
+        <div class="card ">
+          <div class="card-header">
+            Fresh Meat!
+          </div>
+          <div class="card-body">
+            {{#each burgers}}
+              {{#if this.devoured}}
+              {{else}}
+              <div class="card">
+              <p class="mx-auto my-1">{{this.burger_name}}</p>
+              <button class="devour-btn mx-auto my-1" data-burgerId="{{this.id}}">Devour</button>
+              </div>
+              {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm">
+        {{!-- devoured burgers go here --}}
+        <div class="card ">
+          <div class="card-header">
+            Sold Out!
+          </div>
+          <div class="card-body">
+            {{#each burgers}}
+              {{#if this.devoured}}
+              <div class="card">
+                <p class="mx-auto my-auto">{{this.burger_name}}</p>
+              </div>
+              {{else}}
+              {{/if}}
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
