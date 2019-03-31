@@ -15,11 +15,10 @@ $(function() {
       // create a new burger
       let newBurger = {
         name: myInput,
-        devoured: 0,
       }
       $.ajax({
         type: `POST`,
-        url: `/api/burgers`,
+        url: `/api/addBurger`,
         data: newBurger,
         success: function (result) {
           //console.log(`successful ajax`);

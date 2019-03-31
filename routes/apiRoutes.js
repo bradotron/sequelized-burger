@@ -1,12 +1,12 @@
 // Dependencies
 // =============================================================
-var Burger = require("../models/burger.js"); // Routes
+var db = require("../models/index.js"); // Routes
 // =============================================================
 
 var express = require("express");
 var router = express.Router();
 
-// Get all books
+// Get all burgers
 router.get("/all", function(req, res) {
   console.log(`testing apiRouter`);
   res.send(`api routes testing`);
@@ -27,10 +27,14 @@ router.get("/all", function(req, res) {
 //   });
 // });
 
-// router.post(`/api/burgers`, function(req, res) {
-//   burger.insertOne([`burger_name`, `devoured`], [ req.body.name, req.body.devoured] ).then(function(result) {
-//     res.sendStatus(200).end();
-//   });
-// })
+router.post(`/addBurger`, function(req, res) {
+  console.log(`adding ${req.body.name}`);
+
+  db.Burger.create({
+    burgerName: req.body.name
+  }).then(function(dbBurger) {
+    //console.log(dbBurger);
+  });
+});
 
 module.exports = router;

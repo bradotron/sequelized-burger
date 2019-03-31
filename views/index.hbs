@@ -18,15 +18,15 @@
             Fresh Meat!
           </div>
           <div class="card-body">
-            {{!-- {{#each burgers}}
-              {{#if this.devoured}}
+            {{#each burgers}}
+              {{#if this.dataValues.devoured}}
               {{else}}
               <div class="card">
-              <p class="mx-auto my-1">{{this.burger_name}}</p>
-              <button class="devour-btn mx-auto my-1" data-burgerId="{{this.id}}">Devour</button>
+              <p class="mx-auto my-1">{{this.dataValues.burgerName}}</p>
+              <button class="devour-btn mx-auto my-1" data-burgerId="{{this.dataValues.id}}">Devour</button>
               </div>
               {{/if}}
-            {{/each}} --}}
+            {{/each}}
           </div>
         </div>
       </div>
@@ -37,14 +37,14 @@
             Sold Out!
           </div>
           <div class="card-body">
-            {{!-- {{#each burgers}}
-              {{#if this.devoured}}
+            {{#each burgers}}
+              {{#if this.dataValues.devoured}}
               <div class="card">
-                <p class="mx-auto my-auto">{{this.burger_name}}</p>
+                <p class="mx-auto my-auto">{{this.dataValues.burgerName}}</p>
               </div>
               {{else}}
               {{/if}}
-            {{/each}} --}}
+            {{/each}}
           </div>
         </div>
       </div>
