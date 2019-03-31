@@ -1,29 +1,19 @@
-var orm = require(`../config/orm.js`);
+// Dependencies
+// =============================================================
 
-var burger = {
-  all: function() {
-    return new Promise(function(resolve, reject) {
-      orm.selectAll(`burgers`).then(function(result) {
-        resolve(result);
-      });
-    });
-  },
+// Sequelize (capital) references the standard library
+var Sequelize = require("sequelize");
+// sequelize (lowercase) references my connection to the DB.
+var sequelize = require("../config/connection.js");
 
-  insertOne: function(cols, vals) {
-    return new Promise(function(resolve, reject) {
-      orm.insertOne(`burgers`, cols, vals).then(function(result) {
-        resolve(result);
-      });
-    });
-  },
+// Creates a "Burger" model that matches up with DB
+var Burger = sequelize.define("burger", {
+  burgerName: { type: Sequelize.STRING, allowNull: false },
+  devoured: { type: Sequelize.BOOLEAN, allowNull: false, defaultValue: false },
+});
 
-  updateOne: function(objColsVals, condition) {
-    return new Promise(function(resolve, reject) {
-      orm.updateOne(`burgers`, objColsVals, condition).then(function(result) {
-        resolve(result);
-      });
-    });
-  },
-};
+// Syncs with DB
+Burger.sync();
 
-module.exports = burger;
+// Makes the Burger Model available for other files (will also create a table)
+module.exports = Burger;
