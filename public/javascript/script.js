@@ -36,7 +36,7 @@ $(function() {
     let myId = $(this).attr(`data-burgerId`);
     $.ajax({
       type: `PUT`,
-      url: `/api/burgers/${myId}`,
+      url: `/api/devour/${myId}`,
       success: function (result) {
         //console.log(`successful ajax`);
         // reload the page to force a refresh of the burger list
