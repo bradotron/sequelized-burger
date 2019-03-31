@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var apiRouter = require(`./routes/apiRoutes.js`)(app);
+var apiRouter = require(`./routes/apiRoutes.js`);
 
 app.use(`/api`, apiRouter);
 
